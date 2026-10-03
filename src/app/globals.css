@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050507;
+  --foreground: #e8e8ec;
+  --muted: #a0a0b0;
+  --accent: #00d4ff;
+  --accent-dim: #0099bb;
+  --accent-glow: rgba(0, 212, 255, 0.15);
+  --surface: #0c0c10;
+  --surface-raised: #111116;
+  --surface-elevated: #16161c;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-active: rgba(255, 255, 255, 0.12);
+  --success: #00e676;
+  --warning: #ffab00;
+  --error: #ff5252;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-dim: var(--accent-dim);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-active: var(--border-active);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) transparent;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(0, 212, 255, 0.25);
+  color: #ffffff;
+}
+
+/* Grid background pattern */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.grid-pattern-fine {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Glow effects */
+.glow-accent {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1), 0 0 60px rgba(0, 212, 255, 0.05);
+}
+
+.glow-accent-strong {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.2), 0 0 80px rgba(0, 212, 255, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+/* Animated gradient border */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-border {
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  background-size: 200% 100%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Connection line animation */
+@keyframes flow {
+  0% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-flow {
+  animation: flow 1.5s linear infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Subtle scan line effect */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count {
+  animation: count-up 0.6s ease-out forwards;
+}
+
+/* Node pulse */
+@keyframes node-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.animate-node-pulse {
+  animation: node-pulse 3s ease-in-out infinite;
+}
+
+/* Data flow along paths */
+@keyframes data-flow {
+  0% { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
 }
