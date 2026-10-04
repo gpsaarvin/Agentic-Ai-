@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
-import AgentNetwork from "./AgentNetwork";
+import AgentVideo from "./AgentVideo";
 
 export default function Hero() {
   return (
@@ -110,14 +110,14 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Agent Network Visualization */}
+        {/* Live agent video feed */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.8 }}
           className="mt-16 lg:mt-20"
         >
-          <AgentNetwork />
+          <AgentVideo />
         </motion.div>
       </div>
     </section>
